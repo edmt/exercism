@@ -1,0 +1,8 @@
+(require 'hello-world-test)
+(hello-world-test/run-tests)
+(clojure.test/run-tests 'hello-world-test)
+(doc hello-world-test 
+)
+(hello-world)
+(hello-world/hello)
+(clojure.test/run-tests 'hello-world-test)

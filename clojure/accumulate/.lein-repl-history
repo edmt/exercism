@@ -1,0 +1,5 @@
+(empty? [])
+(every? [])
+(every? seq [])
+(seq [])
+(conj [] 1)

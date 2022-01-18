@@ -1,0 +1,294 @@
+(count '(2 10))
+(defn pow [base exp]
+  (reduce * (repeat exp base))
+)
+zip
+(range 2 0 -1)
+(range 1 0 -1)
+(range 1 -1 -1)
+(zipmap (range 1 -1 -1) '(2 10))
+(zipmap '(2 10) (range 1 -1 -1))
+(dec 3)
+(zipmap '(2 10) (range 1 -1 -1))
+(take (zipmap '(2 10) (range 1 -1 -1)))
+(take (zipmap '(2 10) (range 1 -1 -1)) 1)
+(take 1 (zipmap '(2 10) (range 1 -1 -1)))
+(defn to10 [from digits]
+  (->>
+    (zipmap digits (range (dec (count digits)) -1 -1))
+    (map (fn [[x y]] (* x (pow from y))))
+    (reduce +)
+  )
+)
+(to10 16 '(2 10))
+(defn to10 [from digits]
+  (->>
+    (range (dec (count digits)) -1 -1)
+    (zipmap digits)
+    (map (fn [[x y]] (* x (pow from y))))
+    (reduce +)
+  )
+)
+(to10 16 '(2 10))
+(Math/log 42)
+(Math/log 42 3)
+(/ (Math/log 42) (Math/log 3))
+(int (/ (Math/log 42) (Math/log 3)))
+(defn custom-log [num base]
+  (int (/ (Math/log num) (Math/log base)))
+)
+(custom-log 42 3)
+(range 3 -1 -1)
+(/0 1)
+(/ 0 1)
+(doc complement)
+(custom-log 42 3)
+(range 3 -1 -1)
+(map #((pow 3 %1)) (range 3 -1 -1)
+))
+(defn pow [base exp]
+  (reduce * (repeat exp base))
+)
+(map #((pow 3 %1)) (range 3 -1 -1))
+(map #((pow 3 %)) (range 3 -1 -1))
+(map #(1)) (range 3 -1 -1))
+(map #([])) (range 3 -1 -1))
+(map #([]) (range 3 -1 -1))
+(map #(%1) (range 3 -1 -1))
+(map #(%) (range 3 -1 -1))
+(map dec (range 3 -1 -1))
+#()
+#(%)
+#{}
+#{1 2}
+#{1 2 3}
+#{1 2 2}
+(map #(identity) (range 3 -1 -1))
+(map #(identity %) (range 3 -1 -1))
+(map #(identity %1) (range 3 -1 -1))
+(map #(pow 3 %1) (range 3 -1 -1))
+(drop 1 (2 1 0 -1)) 
+(drop 1 '(2 1 0 -1)) 
+(seq '())
+(pow 3 3)
+(pow 3 2)
+(pow 3 3)
+(/ 42 (pow 3 3))
+(int (/ 42 (pow 3 3)))
+(/ 42 (pow 3 3))
+(defn to-base-n [num base]
+  (loop [n num result [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)])
+      (recur (- num (* value times)) (times) (drop 1 exponents))
+      result))
+)
+(defn to-base-n [num base]
+  (loop [n num result [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (recur (- num (* value times)) (times) (drop 1 exponents))
+      )
+      result))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num result [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (recur (- num (* value times)) times (drop 1 exponents))
+      )
+      result))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num result [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (recur (- num (* value times)) (conj results times) (drop 1 exponents))
+      )
+      result))
+)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (recur (- num (* value times)) (conj results times) (drop 1 exponents))
+      )
+      result))
+)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (recur (- num (* value times)) (conj results times) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(/14 3)
+(/ 14 3)
+(int (/ 14 3))
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (print value)
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (println (- num (* value times)))
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (println times)
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (println times)
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ num value)]
+        (println num)
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ num value))]
+        (println num)
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ num value))]
+        (println (* value times))
+        (recur (- num (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(-42 27)
+(- 42 27)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ num value))]
+        (recur (- n (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ n value))]
+        (recur (- n (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(= '(1) [1])
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (/ n value)]
+        (recur (- n (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ n value)]
+        (recur (- n (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ n value))]
+        (recur (- n (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results))
+)
+(to-base-n 42 3)
+(defn pow [base exp]
+  (reduce * (repeat exp base)))
+(defn custom-log [num base]
+  (int (/ (Math/log num) (Math/log base))))
+(defn to-base-10 [from digits]
+  (->>
+    (range (dec (count digits)) -1 -1)
+    (zipmap digits)
+    (map (fn [[x y]] (* x (pow from y))))
+    (reduce +)
+  ))
+(defn to-base-n [num base]
+  (loop [n num results [] exponents (range (custom-log num base) -1 -1)]
+    (if (seq exponents)
+      (let [value (pow base (first exponents)) times (int (/ n value))]
+        (recur (- n (* value times)) (conj results (int times)) (drop 1 exponents))
+      )
+      results)))
+(to-base-10 2 '(1 0 1))
+(range (dec (count digits)) -1 -1) '(1 0 1))
+(range (dec (count digits)) -1 -1) '(1 0 1)))
+(range (dec (count '(1 0 1))) -1 -1)))
+(range (dec (count '(1 0 1))) -1 -1))
+(range (dec (count '(1 0 1))) -1 -1)
+(zipmap ('1 0 1) (range (dec (count '(1 0 1))) -1 -1))
+(zipmap '(1 0 1) (range (dec (count '(1 0 1))) -1 -1))
+(zipmap [1 0 1] (range (dec (count '(1 0 1))) -1 -1))
+zip
+zipmap
+(doc zipmap)
+any? 
+(doc any?)
+(doc some?)
+(any? nil)
+(any? [])
+(any? 1)
+(any? false)
+(some? false)

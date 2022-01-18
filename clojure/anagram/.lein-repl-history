@@ -1,0 +1,10 @@
+(sort [22, 322, -2])
+(sort "hola")
+(sort "listen")
+(sort "inlets")
+filter
+(filter (fn (identity foo)) [11 22])
+(filter (fn [foo] (identity foo)) [11 22])
+=
+!=
+<>

@@ -1,0 +1,8 @@
+(re-find "." "[ERROR]: Invalid operation")
+(re-find #"." "[ERROR]: Invalid operation")
+(re-find #"\[.*\]" "[ERROR]: Invalid operation")
+(re-find #"\[.*\]:(.*)" "[ERROR]: Invalid operation")
+(re-find #"\[(.*)\]:(.*)" "[ERROR]: Invalid operation")
+(clojure.string/trimr "hey ")
+(last (re-find #"\[(.*)\]:(.*)" "[ERROR]: Invalid operation"))
+(last (re-find #"\[(.*)\]: (.*)" "[ERROR]: Invalid operation"))

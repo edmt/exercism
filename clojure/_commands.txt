@@ -1,0 +1,7 @@
+$ clj-kondo --lint Exercism/clojure/all-your-base/src/all_your_base.clj
+
+cljstyle check Exercism/clojure/all-your-base/src/all_your_base.clj
+
+Once you've identified formatting issues, you can choose to ignore them, fix them manually, or let cljstyle fix them with:
+
+cljstyle fix
